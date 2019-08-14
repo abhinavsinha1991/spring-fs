@@ -18,6 +18,7 @@ public class ExchangeValue {
   private String to;
   
   private BigDecimal conversionMultiple;
+  private String ip;
   private int port;
   
   public ExchangeValue() {
@@ -55,6 +56,16 @@ public class ExchangeValue {
 
   public void setPort(int port) {
     this.port = port;
+  }
+
+  public String getIp()
+  {
+    return ip;
+  }
+
+  public void setIp( final String ip )
+  {
+    this.ip = ip;
   }
 
 }
