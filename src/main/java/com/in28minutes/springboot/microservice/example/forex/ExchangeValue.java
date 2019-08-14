@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class ExchangeValue {
@@ -18,6 +19,7 @@ public class ExchangeValue {
   private String to;
   
   private BigDecimal conversionMultiple;
+  @Transient
   private String ip;
   private int port;
   
@@ -58,6 +60,7 @@ public class ExchangeValue {
     this.port = port;
   }
 
+  @Transient
   public String getIp()
   {
     return ip;
