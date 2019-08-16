@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import javassist.NotFoundException;
+
 @RestController
 public class ForexController {
 
@@ -23,10 +25,16 @@ public class ForexController {
   
   @GetMapping("/currency-exchange/from/{from}/to/{to}")
   public ExchangeValue retrieveExchangeValue
-    (@PathVariable String from, @PathVariable String to){
+    (@PathVariable String from, @PathVariable String to) throws NotFoundException
+  {
     
     ExchangeValue exchangeValue = 
         repository.findByFromAndTo(from, to);
+
+    if (exchangeValue == null){
+        logger.error( "No exchange rate found for {} to {}",from,to );
+        throw new NotFoundException( "No exchange rate found for "+from+" to"+to );
+    }
     
     exchangeValue.setPort(
         Integer.parseInt(environment.getProperty("local.server.port")));
