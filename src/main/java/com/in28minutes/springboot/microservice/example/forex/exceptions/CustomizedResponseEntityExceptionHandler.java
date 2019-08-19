@@ -1,7 +1,3 @@
-/*
- * Copyright 2019 Applied Card Technologies Ltd
- */
-
 package com.in28minutes.springboot.microservice.example.forex.exceptions;
 
 import org.springframework.http.HttpStatus;
