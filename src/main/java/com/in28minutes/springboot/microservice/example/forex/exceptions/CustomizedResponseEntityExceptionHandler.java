@@ -8,16 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import javassist.NotFoundException;
-
 @ControllerAdvice
 @RestController
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler
 {
 
-    @ExceptionHandler( NotFoundException.class )
+    @ExceptionHandler( FSDataNotFoundException.class )
     @ResponseStatus( HttpStatus.NOT_FOUND )
-    public final Exception handleNotFoundException( NotFoundException ex,
+    public final Exception handleNotFoundException( FSDataNotFoundException ex,
                                                                WebRequest request )
     {
         return ex;
